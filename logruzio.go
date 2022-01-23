@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"github.com/logzio/logzio-go"
 	"github.com/sirupsen/logrus"
-	"os"
 )
 
 // HookOpts represents Logrus Logzio hook options
@@ -34,7 +33,7 @@ func New(host, token, appName string, fields logrus.Fields) (*Hook, error) {
 	opts.AdditionalFields["type"] = appName
 	l, err := logzio.New(
 		token,
-		logzio.SetDebug(os.Stderr),
+		logzio.SetDebug(nil),
 		logzio.SetUrl(host),
 		logzio.SetInMemoryQueue(true),
 		logzio.SetinMemoryCapacity(1024*1024),
